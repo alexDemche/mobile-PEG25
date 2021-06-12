@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
-const BASE_FONT = 'sans-serif';
+const BASE_FONT = 'Roboto';
 
 export const AppText = props => {
   return (
-    <Text {...props} style={[styles.myAppText, props.style]}>
+    <View {...props} style={[styles.myAppText, props.style]}>
       {props.children}
-    </Text>
+    </View>
   );
 };
 

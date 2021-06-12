@@ -1,25 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-gesture-handler';
 import React from 'react';
+import 'react-native-gesture-handler';
+
 import { NavigationContainer } from '@react-navigation/native';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql,
+} from '@apollo/client';
+
+import { BASE_URL } from './src/config';
+
+import { MainStackNavigator } from './src/navigators/MainStackNavigator';
+
+const client = new ApolloClient({
+  uri: BASE_URL,
+  cache: new InMemoryCache(),
+});
+
+const RootStack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!!</Text>
-        <StatusBar style="auto" />
-      </View>
-    </NavigationContainer>
+    <ApolloProvider client={client}>
+      <NavigationContainer>
+        <RootStack.Navigator
+          screenOptions={{
+            headerShown: false,
+            animationEnabled: false,
+          }}>
+          <RootStack.Screen name={'MainStack'} component={MainStackNavigator} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    </ApolloProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

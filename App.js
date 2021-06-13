@@ -12,12 +12,12 @@ import {
   gql,
 } from '@apollo/client';
 
-import { BASE_URL } from './src/config';
+import { GRAPHQL_URL } from './src/config';
 
 import { MainStackNavigator } from './src/navigators/MainStackNavigator';
 
 const client = new ApolloClient({
-  uri: BASE_URL,
+  uri: GRAPHQL_URL,
   cache: new InMemoryCache(),
 });
 

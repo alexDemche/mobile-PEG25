@@ -14,3 +14,7 @@ web-build/
 
 # WebStorm
 .idea
+
+# GraphQL sheme
+Users/
+.graphqlconfig

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Center } from '../components/Center';
+import { Center } from '../../components/Center';
 import { Text, TouchableOpacity } from 'react-native';
 
 export const NotFoundScreen = ({ navigation }) => (

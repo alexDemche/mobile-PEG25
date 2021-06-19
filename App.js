@@ -13,11 +13,11 @@ const client = new ApolloClient({
 });
 
 export default function App() {
-  const theme = useColorTheme();
+  const currentTheme = useColorTheme();
 
   return (
     <ApolloProvider client={client}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={currentTheme}>
         <Navigation />
       </ThemeProvider>
     </ApolloProvider>

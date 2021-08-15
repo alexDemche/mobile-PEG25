@@ -1,13 +1,10 @@
 import React from 'react';
-import { Button, FlatList, Text } from 'react-native';
 
 import { useQuery } from '@apollo/client';
-
-import { ViewStyled, Title } from './styles';
 import { GET_CATEGORY } from '../../graphql/requests';
-import { Category } from '../../components/Category/Category';
+import { ViewStyled, Title } from './styles';
+
 import { AppText } from '../../components/AppText';
-import { Emotions } from '../../containers/Emotions';
 import { CategoryItems } from '../../components/CategoryItems';
 import { Loading } from '../../components/Loading';
 import { Error } from '../../components/Error';
@@ -37,14 +34,7 @@ export const CategoryScreen = ({ navigation, route }) => {
     <ViewStyled>
       <Title>{category.title}</Title>
       <AppText>{category.description}</AppText>
-
-      {/*<Emotions navigation={navigation} emotions={emotions} />*/}
       <CategoryItems navigation={navigation} emotions={emotions} />
-
-      {/*<Button*/}
-      {/*  title="Go to Categories"*/}
-      {/*  onPress={() => navigation.navigate('Categories')}*/}
-      {/*/>*/}
     </ViewStyled>
   );
 };

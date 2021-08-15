@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { TabTwoScreen } from '../screens/TabTwoScreen';
+import { SettingsScreen } from '../screens/SettingsScreen';
 
 const TabTwoStack = createStackNavigator();
 
@@ -10,7 +10,7 @@ export function TabTwoNavigator() {
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
         name="TabTwoScreen"
-        component={TabTwoScreen}
+        component={SettingsScreen}
         options={{
           headerTitle: 'Tab Two Title',
         }}

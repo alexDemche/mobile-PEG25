@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList } from 'react-native';
+import { styles } from './styles';
 import { CategoryItem } from '../CategoryItem';
 
 export const CategoryItems = ({ navigation, emotions }) => {
@@ -32,10 +33,3 @@ export const CategoryItems = ({ navigation, emotions }) => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  list: {
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-});

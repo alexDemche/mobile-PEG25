@@ -1,18 +1,19 @@
 import React from 'react';
-import { Center } from '../../components/Center';
 import { Text, Button } from 'react-native';
-import { useColorThemeStore } from '../../store';
-import { ViewStyled, Title } from './styles';
 
-export const TabTwoScreen = () => {
+import { useColorThemeStore } from '../../store';
+
+import { Center } from '../../components/Center';
+
+export const SettingsScreen = () => {
   const isDarkMode = useColorThemeStore(state => state.isDarkMode);
   const toggleDarkMode = useColorThemeStore(state => state.toggleDarkMode);
 
   return (
-    <ViewStyled>
-      <Title>{isDarkMode ? 'dark' : 'light'}</Title>
-      <Title>Hello TabTwoScreen</Title>
+    <Center>
+      <Text>{isDarkMode ? 'dark' : 'light'}</Text>
+      <Text>Hello TabTwoScreen</Text>
       <Button onPress={toggleDarkMode} title={'toggle theme'} />
-    </ViewStyled>
+    </Center>
   );
 };

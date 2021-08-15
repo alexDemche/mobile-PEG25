@@ -1,20 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 
-export const Error = ({ error, style }) => {
+import { ErrorTextWrapper } from './styles';
+import { AppText } from '../AppText';
+import { Center } from '../Center';
+
+export const Error = ({ error }) => {
   return (
-    <View style={styles.container}>
-      <Text style={[styles.text, style]}>{error}</Text>
-    </View>
+    <Center>
+      <ErrorTextWrapper>
+        <AppText color="red" fontSize={16} fontWeight="bold">
+          {error}
+        </AppText>
+      </ErrorTextWrapper>
+    </Center>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-  text: {
-    paddingVertical: 8,
-    fontSize: 16,
-    color: 'red',
-    fontWeight: 'bold',
-  },
-});

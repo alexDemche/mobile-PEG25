@@ -1,31 +1,51 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { GET_PRODUCTS } from '../graphql/requests';
+import { CategoriesScreen } from '../../screens/CategoriesScreen';
 import { useQuery } from '@apollo/client';
+import { GET_CATEGORIES } from '../../graphql/requests';
 
 export const HomeScreen = ({ navigation }) => {
-  const { loading, error, data } = useQuery(GET_PRODUCTS);
+  const { data, loading, error } = useQuery(GET_CATEGORIES);
+  console.log('data -->', data);
 
-  if (loading) {
-    return <Text>Loading...</Text>;
+  if (loading || error) {
+    return null;
   }
 
-  if (error) {
-    return <Text>Error :</Text>;
-  }
+  const renderCategory = ({ item: category }) => {
+    console.log('category -->', category);
+    return (
+      <Button
+        title={category.title}
+        onPress={() => navigation.navigate('Category')}
+      />
+    );
+  };
 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!!</Text>
-      <Text>{data.products.map(product => product.name)}</Text>
+    <View>
+      <Text>Helo from Home screen</Text>
+      {/*<FlatList data={data.categories} renderItem={renderCategory} />*/}
+
+      {/*<CategoriesScreen navigation={navigation} />*/}
       <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
+        title={'details'}
+        onPress={() => navigation.navigate('Category')}
       />
-      <StatusBar style="auto" />
     </View>
   );
+  // return (
+  //   <View style={styles.container}>
+  //     <Text>Hello</Text>
+  //     <CategoriesScreen />
+  //     <Button
+  //       title="Go to Details"
+  //       onPress={() => navigation.navigate('CategoryDetails')}
+  //     />
+  //     <StatusBar style="auto" />
+  //   </View>
+  // );
 };
 
 const styles = StyleSheet.create({

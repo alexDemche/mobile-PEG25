@@ -1,8 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { HomeScreen } from '../screens/HomeScreen';
-import { DetailsScreen } from '../screens/DetailsScreen';
+import { CategoryScreen } from '../screens/CategoryScreen';
+import { CategoriesScreen } from '../screens/CategoriesScreen';
+import { EmotionScreen } from '../screens/EmotionScreen';
 
 const MainStack = createStackNavigator();
 
@@ -13,17 +14,27 @@ export const MainStackNavigator = () => {
         headerShown: true,
       }}>
       <MainStack.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Categories"
+        component={CategoriesScreen}
         options={{
-          title: 'Home',
+          title: 'Categories',
         }}
       />
+
       <MainStack.Screen
-        name="Details"
-        component={DetailsScreen}
+        name="Category"
+        component={CategoryScreen}
         options={{
-          title: 'Details',
+          title: 'Category',
+        }}
+      />
+
+      <MainStack.Screen
+        name="Emotion"
+        component={EmotionScreen}
+        options={{
+          title: 'Emotion',
+          headerShown: false,
         }}
       />
     </MainStack.Navigator>

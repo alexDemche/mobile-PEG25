@@ -8,6 +8,7 @@ export const useColorTheme = () => {
     state.isDarkMode,
     state.isUserToggledMode,
   ]);
+
   const setIsDarkMode = useColorThemeStore(state => state.setIsDarkMode);
 
   const deviceTheme = useColorScheme();
@@ -15,7 +16,6 @@ export const useColorTheme = () => {
   const currentTheme = isDarkMode ? themes.dark : themes.light;
 
   useEffect(() => {
-    console.log('inside useEffexc');
     if (isUserToggledMode) {
       return;
     }
@@ -25,7 +25,7 @@ export const useColorTheme = () => {
     } else {
       setIsDarkMode(false);
     }
-  }, []);
+  }, [isUserToggledMode, isDeviseDarkTheme, setIsDarkMode]);
 
   return currentTheme;
 };

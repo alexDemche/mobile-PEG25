@@ -1,19 +1,14 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-
-const BASE_FONT = 'Roboto';
+import { StyledText, StyledTextWrapper } from './styles';
 
 export const AppText = props => {
+  const { fontSize, fontWeight, children } = props;
+
   return (
-    <View {...props} style={[styles.myAppText, props.style]}>
-      {props.children}
-    </View>
+    <StyledTextWrapper {...props}>
+      <StyledText fontSize={fontSize} fontWeight={fontWeight}>
+        {children}
+      </StyledText>
+    </StyledTextWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  myAppText: {
-    fontFamily: BASE_FONT,
-    fontSize: 16,
-  },
-});

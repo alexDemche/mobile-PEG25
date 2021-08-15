@@ -15,6 +15,8 @@ const client = new ApolloClient({
 export default function App() {
   const currentTheme = useColorTheme();
 
+  console.log('app recder -----');
+
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={currentTheme}>

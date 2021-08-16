@@ -79,6 +79,11 @@ export const MySlider = ({ images, navigation, title }) => {
     setIsControls(false);
   };
 
+  const goBack = () => {
+    setIsControls(false);
+    navigation.goBack();
+  };
+
   const resumePlaying = () => {
     setIsRunning(true);
     setIsControls(false);
@@ -140,7 +145,7 @@ export const MySlider = ({ images, navigation, title }) => {
   }
 
   return (
-    <View>
+    <View style={{ position: 'relative' }}>
       {listComponent}
 
       <ActiveIndexesBoard activeIndex={activeIndex} length={images.length} />
@@ -160,10 +165,10 @@ export const MySlider = ({ images, navigation, title }) => {
       </SettingButtonStyledSafeAreaView>
 
       <Controls
-        navigation={navigation}
         setIsControls={setIsControls}
         title={title}
         isShown={isControls}
+        goBack={goBack}
         playFromBeginning={playFromBeginning}
         resumePlaying={resumePlaying}
       />

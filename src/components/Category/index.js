@@ -20,7 +20,6 @@ export const Category = ({ category, navigation, onPress }) => {
           resizeMode={'cover'}
         />
       )}
-
       <StyledCategoryTextWrapper>
         <AppText fontSize={14}>{title}</AppText>
       </StyledCategoryTextWrapper>

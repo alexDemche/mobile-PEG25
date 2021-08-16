@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 import { useQuery } from '@apollo/client';
 import { GET_CATEGORIES } from '../../graphql/requests';

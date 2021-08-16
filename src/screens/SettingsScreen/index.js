@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, Button } from 'react-native';
+import { Button } from 'react-native';
 
 import { useColorThemeStore } from '../../store';
 
 import { Center } from '../../components/Center';
+import { AppText } from '../../components/AppText';
 
 export const SettingsScreen = () => {
   const isDarkMode = useColorThemeStore(state => state.isDarkMode);
@@ -11,8 +12,8 @@ export const SettingsScreen = () => {
 
   return (
     <Center>
-      <Text>{isDarkMode ? 'dark' : 'light'}</Text>
-      <Text>Hello TabTwoScreen</Text>
+      <AppText>Hello from TabTwoScreen</AppText>
+      <AppText>{isDarkMode ? 'dark' : 'light'}</AppText>
       <Button onPress={toggleDarkMode} title={'toggle theme'} />
     </Center>
   );

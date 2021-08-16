@@ -1,14 +1,15 @@
 import React from 'react';
-import { Text, Pressable } from 'react-native';
 import { Center } from '../../../Center';
-import { useNavigation } from '@react-navigation/native';
 import { GoToButton } from '../../../GoToButton';
+import { AppText } from '../../../AppText';
 
 export const EmptySlider = () => {
   return (
     <Center>
-      <Text>No Images</Text>
-      <GoToButton screenName="Category" />
+      <AppText marginBottom={10} fontSize={14}>
+        No Images
+      </AppText>
+      <GoToButton fontSize={14} withBg screenName="Category" />
     </Center>
   );
 };

@@ -12,7 +12,7 @@ import { AppText } from '../../../AppText';
 import { IconButton } from '../../../IconButton';
 
 export const Controls = ({
-  navigation,
+  goBack,
   setIsControls,
   title,
   isShown,
@@ -23,7 +23,7 @@ export const Controls = ({
     <ControlsContainer isShown={isShown}>
       <ControlsHeader>
         <ControlsHeaderButtons>
-          <IconButton name="back" lg onPress={navigation.goBack} round shadow />
+          <IconButton name="back" lg onPress={goBack} round shadow />
 
           <IconButton
             name="close"
@@ -66,7 +66,7 @@ export const Controls = ({
           name="back"
           size={36}
           xl
-          onPress={navigation.goBack}
+          onPress={goBack}
           text="Back"
           round
           shadow

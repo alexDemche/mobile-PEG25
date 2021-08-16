@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+
 // import { TabOneNavigator } from './TabOneNavigator';
 import { TabTwoNavigator } from './TabTwoNavigator';
 import { MainStackNavigator } from './MainStackNavigator';
@@ -24,8 +25,7 @@ export const BottomTabNavigator = () => {
     <BottomTab.Navigator
       tabBarOptions={{
         style: {
-          backgroundColor: currentTheme.bottomTabBgColor,
-          borderTopColor: currentTheme.color,
+          backgroundColor: currentTheme.backgroundColor,
           height: 86,
           paddingBottom: 24,
         },
@@ -37,7 +37,8 @@ export const BottomTabNavigator = () => {
           fontSize: 12,
           fontWeight: 'bold',
         },
-        activeTintColor: currentTheme.accentColor,
+        activeTintColor: currentTheme.color,
+        inactiveTintColorTintColor: 'red',
       }}>
       <BottomTab.Screen
         name="TabOne"
@@ -51,7 +52,7 @@ export const BottomTabNavigator = () => {
               style={{ color: color }}
             />
           ),
-          tabBarLabel: 'Emotions',
+          tabBarLabel: 'Categories',
         })}
       />
       <BottomTab.Screen

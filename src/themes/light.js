@@ -1,7 +1,7 @@
 export default {
+  name: 'light',
   color: '#000',
-  backgroundColor: '#fff',
+  backgroundColor: '#f9f9f9',
   backgroundColorTransparent: 'rgba(255, 255, 255, 0.6)',
-  bottomTabBgColor: '#eee',
   accentColor: '#55AAFF',
 };

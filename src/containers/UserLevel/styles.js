@@ -1,11 +1,13 @@
 import styled from 'styled-components/native';
 import { hexToRGB } from '../../utils/helpers';
+import { CSS } from '../../constants';
 
 export const ViewStyled = styled.View`
   padding: 10px 0;
   margin: 10px 0;
   align-items: center;
-  background-color: ${props => hexToRGB(props.theme.accentColor, 0.2)};
+  background-color: ${props =>
+    hexToRGB(props.theme.accentColor, CSS.OPACITY.SM)};
   border-radius: 6px;
   min-width: 50%;
   align-self: center;

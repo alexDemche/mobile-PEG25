@@ -12,7 +12,7 @@ export const ThemeSwitcher = () => {
   return (
     <ViewStyled>
       <AppText fontSize={16} marginBottom={5}>
-        Theme {isDarkMode ? 'dark' : 'light'}
+        Theme: {isDarkMode ? 'dark' : 'light'}
       </AppText>
       <Switch
         trackColor={{ false: '#767577', true: '#81b0ff' }}

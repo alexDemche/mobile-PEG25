@@ -1,21 +1,23 @@
 import React, { useCallback } from 'react';
 import { FlatList } from 'react-native';
-import { styles } from '../../stylesGlobal';
-import { CategoryItem } from '../CategoryItem';
+
+import { Category } from '../Category';
 import { AppText } from '../AppText';
 
-export const CategoryItems = ({ navigation, emotions, category }) => {
-  const _renderItem = useCallback(
-    ({ item: emotion }) => {
+import { styles } from '../../stylesGlobal';
+
+export const Categories = ({ navigation, categories }) => {
+  const _renderCategory = useCallback(
+    ({ item: category }) => {
       return (
-        <CategoryItem
-          emotion={emotion}
+        <Category
+          category={category}
+          title={category.title}
           onPress={() =>
-            navigation.navigate('Emotion', {
-              emotionId: emotion.id,
+            navigation.navigate('Category', {
+              categoryId: category.id,
             })
           }
-          goBack={() => navigation.goBack()}
         />
       );
     },
@@ -24,21 +26,23 @@ export const CategoryItems = ({ navigation, emotions, category }) => {
 
   const _keyExtractor = useCallback(item => item.id.toString(), []);
 
+  console.log('categories -->', categories);
+
   const ListHeaderComponent = () => {
     return (
       <AppText fontSize={24} marginBottom={5}>
-        {category.title}
+        CATEGORIES
       </AppText>
     );
   };
 
   return (
     <FlatList
-      data={emotions}
-      renderItem={_renderItem}
+      data={categories}
+      renderItem={_renderCategory}
       keyExtractor={_keyExtractor}
-      numColumns={3}
       contentContainerStyle={styles.flatList}
+      numColumns={2}
       ListHeaderComponent={ListHeaderComponent}
     />
   );

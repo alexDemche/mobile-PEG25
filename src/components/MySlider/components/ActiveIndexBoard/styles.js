@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { hexToRGB } from '../../../../utils/helpers';
+import { CSS } from '../../../../constants';
 
 export const StyledSafeAreaView = styled.SafeAreaView`
   position: absolute;
@@ -8,7 +9,8 @@ export const StyledSafeAreaView = styled.SafeAreaView`
 `;
 
 export const RoundedContainer = styled.View`
-  background-color: ${props => hexToRGB(props.theme.backgroundColor, 0.6)};
+  background-color: ${props =>
+    hexToRGB(props.theme.backgroundColor, CSS.OPACITY.LG)};
   width: 64px;
   height: 64px;
   border-radius: 32px;

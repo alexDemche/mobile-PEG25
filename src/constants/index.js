@@ -1,14 +1,6 @@
-export const LEVELS = [
-  {
-    id: 1,
-    to: 99,
+export const CSS = {
+  OPACITY: {
+    SM: 0.2,
+    LG: 0.6,
   },
-  {
-    id: 2,
-    to: 199,
-  },
-  {
-    id: 3,
-    to: 299,
-  },
-];
+};

@@ -2,9 +2,7 @@ import React from 'react';
 
 import { useQuery } from '@apollo/client';
 import { GET_CATEGORY } from '../../graphql/requests';
-import { ViewStyled, Title } from './styles';
 
-import { AppText } from '../../components/AppText';
 import { CategoryItems } from '../../components/CategoryItems';
 import { Loading } from '../../components/Loading';
 import { Error } from '../../components/Error';
@@ -31,10 +29,10 @@ export const CategoryScreen = ({ navigation, route }) => {
   } = data;
 
   return (
-    <ViewStyled>
-      <Title>{category.title}</Title>
-      <AppText>{category.description}</AppText>
-      <CategoryItems navigation={navigation} emotions={emotions} />
-    </ViewStyled>
+    <CategoryItems
+      navigation={navigation}
+      category={category}
+      emotions={emotions}
+    />
   );
 };

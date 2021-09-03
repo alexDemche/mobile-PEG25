@@ -11,6 +11,8 @@ import { useInterval } from '../../hooks/useInterval';
 import { BASE_URL } from '../../config';
 import { viewportWidth, viewportHeight } from '../../utils/dimensions';
 
+import { useLevelsStore } from '../../store';
+
 import { SettingButtonStyledSafeAreaView, Slide, SlideImage } from './styles';
 
 import { IconButton } from '../IconButton';
@@ -30,6 +32,8 @@ export const MySlider = ({ images, navigation, title }) => {
   const [isControls, setIsControls] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const increasePoints = useLevelsStore(state => state.increasePoints);
+
   const LAST_ELEMENT_INDEX = images.length - 1;
 
   useInterval(
@@ -42,6 +46,10 @@ export const MySlider = ({ images, navigation, title }) => {
     },
     isRunning ? delay : null,
   );
+
+  useEffect(() => {
+    images?.length && increasePoints();
+  }, []);
 
   useEffect(() => {
     if (activeIndex === LAST_ELEMENT_INDEX && !isRunning) {

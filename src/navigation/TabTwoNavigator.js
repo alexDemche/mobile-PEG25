@@ -25,7 +25,7 @@ export function TabTwoNavigator() {
         name="TabTwoScreen"
         component={SettingsScreen}
         options={{
-          headerTitle: 'Tab Two Title',
+          headerTitle: 'Settings',
         }}
       />
     </TabTwoStack.Navigator>

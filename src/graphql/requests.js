@@ -30,6 +30,31 @@ export const GET_CATEGORY = gql`
   }
 `;
 
+export const GET_LEVELS = gql`
+  query getLevels {
+    levels {
+      name
+      id
+      toPoints
+      icon {
+        url
+      }
+    }
+  }
+`;
+
+export const GET_LEVEL = gql`
+  query getLevel($levelId: ID!) {
+    level(id: $levelId) {
+      name
+      id
+      icon {
+        url
+      }
+    }
+  }
+`;
+
 export const GET_EMOTIONS_BY_CATEGORY_ID = gql`
   query getEmotionsByCategoryId($categoryId: ID!) {
     emotions(where: { category: { id: $categoryId } }) {

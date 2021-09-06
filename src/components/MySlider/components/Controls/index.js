@@ -10,6 +10,7 @@ import {
 
 import { AppText } from '../../../AppText';
 import { IconButton } from '../../../IconButton';
+import { translate } from '../../../../i18n';
 
 export const Controls = ({
   goBack,
@@ -44,7 +45,7 @@ export const Controls = ({
             size={36}
             xl
             onPress={resumePlaying}
-            text="Resume"
+            text={translate('buttons.resume')}
             round
             shadow
           />
@@ -56,7 +57,7 @@ export const Controls = ({
             size={36}
             xl
             onPress={playFromBeginning}
-            text="Replay"
+            text={translate('buttons.replay')}
             round
             shadow
           />
@@ -67,7 +68,7 @@ export const Controls = ({
           size={36}
           xl
           onPress={goBack}
-          text="Back"
+          text={translate('buttons.back')}
           round
           shadow
         />

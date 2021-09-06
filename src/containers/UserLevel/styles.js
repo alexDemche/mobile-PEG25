@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const ViewStyled = styled.View`
-  padding: 10px 0;
+  padding: 10px;
   margin: 10px 0;
   align-items: center;
   background-color: ${props => props.theme.accentColorTransparent};

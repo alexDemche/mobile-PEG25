@@ -1,29 +1,15 @@
-import React from 'react';
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import React, { useContext } from 'react';
+import { ActivityIndicator } from 'react-native';
+import { ThemeContext } from 'styled-components';
+
+import { Center } from '../Center';
 
 export const Loading = () => {
+  const themeContext = useContext(ThemeContext);
+
   return (
-    <View style={styles.overlay}>
-      <View style={styles.container}>
-        <ActivityIndicator color={'black'} />
-        <Text style={styles.text}>Loading...</Text>
-      </View>
-    </View>
+    <Center>
+      <ActivityIndicator size="large" color={themeContext.accentColor} />
+    </Center>
   );
 };
-
-const styles = StyleSheet.create({
-  overlay: {
-    ...StyleSheet.absoluteFill,
-    // backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  container: {
-    flexDirection: 'row',
-  },
-  text: {
-    marginLeft: 16,
-    fontSize: 18,
-  },
-});

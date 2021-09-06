@@ -1,0 +1,29 @@
+{
+  "levels": {
+    "level": "Уровень",
+    "points": "Очки",
+    "to_the_next_level": "До следующего уровня"
+  },
+  "navigations": {
+    "settings": "Настройки",
+    "categories": "Категории",
+    "category": "Категория",
+    "emotion": "Эмоции"
+  },
+  "themes": {
+    "name": {
+      "dark": "Темная",
+      "light": "Светлая"
+    },
+    "theme": "Тема"
+  },
+  "buttons": {
+    "resume": "Продолжить",
+    "replay": "Повторить",
+    "back": " Назад"
+  },
+  "titles": {
+    "categories": "Категории"
+  },
+  "loading": "Загрузка"
+}

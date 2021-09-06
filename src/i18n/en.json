@@ -1,0 +1,29 @@
+{
+  "levels": {
+    "level": "Level",
+    "points": "Points",
+    "to_the_next_level": "To the next level"
+  },
+  "navigations": {
+    "settings": "Settings",
+    "categories":"Categories",
+    "category": "Category",
+    "emotion": "Emotion"
+  },
+  "themes": {
+    "name": {
+      "dark": "Dark",
+      "light": "Light"
+    },
+    "theme": "Theme"
+  },
+  "buttons": {
+    "resume": "Resume",
+    "replay": "Replay",
+    "back": "Back"
+  },
+  "titles": {
+    "categories": "Categories"
+  },
+  "loading": "Loading"
+}

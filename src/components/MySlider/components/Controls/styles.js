@@ -5,7 +5,7 @@ export const ControlsButtonWrapper = styled.View`
 `;
 
 export const ControlsContainer = styled.SafeAreaView`
-  background-color: ${props => props.theme.accentColorTransparent};
+  background-color: ${props => props.theme.backgroundColorTransparent};
   position: absolute;
   left: 0;
   right: 0;

@@ -1,22 +1,24 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { ThemeContext } from 'styled-components';
+
 import { SettingsScreen } from '../screens/SettingsScreen';
-import { useCurrentColorTheme } from '../hooks/useCurentColorTheme';
+import { translate } from '../i18n';
 
 const TabTwoStack = createStackNavigator();
 
 export function TabTwoNavigator() {
-  const currentTheme = useCurrentColorTheme();
+  const themeContext = useContext(ThemeContext);
 
   return (
     <TabTwoStack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: currentTheme.backgroundColor,
+          backgroundColor: themeContext.backgroundColor,
         },
-        cardStyle: { backgroundColor: currentTheme.backgroundColor },
-        headerTintColor: currentTheme.color,
+        cardStyle: { backgroundColor: themeContext.backgroundColor },
+        headerTintColor: themeContext.color,
         headerTitleStyle: {
           fontWeight: 'bold',
         },
@@ -25,7 +27,7 @@ export function TabTwoNavigator() {
         name="TabTwoScreen"
         component={SettingsScreen}
         options={{
-          headerTitle: 'Settings',
+          headerTitle: translate('navigations.settings'),
         }}
       />
     </TabTwoStack.Navigator>

@@ -5,6 +5,7 @@ import { Category } from '../Category';
 import { AppText } from '../AppText';
 
 import { styles } from '../../stylesGlobal';
+import { translate } from '../../i18n';
 
 export const Categories = ({ navigation, categories }) => {
   const _renderCategory = useCallback(
@@ -26,12 +27,10 @@ export const Categories = ({ navigation, categories }) => {
 
   const _keyExtractor = useCallback(item => item.id.toString(), []);
 
-  console.log('categories -->', categories);
-
   const ListHeaderComponent = () => {
     return (
       <AppText fontSize={24} marginBottom={5}>
-        CATEGORIES
+        {translate('titles.categories')}
       </AppText>
     );
   };

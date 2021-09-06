@@ -1,19 +1,19 @@
-import React, { useCallback } from 'react';
-
+import React, { useCallback, useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { ThemeContext } from 'styled-components';
 
-// import { TabOneNavigator } from './TabOneNavigator';
+import { translate } from '../i18n';
+
 import { TabTwoNavigator } from './TabTwoNavigator';
 import { MainStackNavigator } from './MainStackNavigator';
 
 import { StyledAntDesignIcon } from './styles';
-import { useCurrentColorTheme } from '../hooks/useCurentColorTheme';
 
 const BottomTab = createBottomTabNavigator();
 
 export const BottomTabNavigator = () => {
-  const currentTheme = useCurrentColorTheme();
+  const themeContext = useContext(ThemeContext);
 
   const getTabBarVisibility = useCallback(route => {
     const routeName = getFocusedRouteNameFromRoute(route) ?? '';
@@ -25,7 +25,7 @@ export const BottomTabNavigator = () => {
     <BottomTab.Navigator
       tabBarOptions={{
         style: {
-          backgroundColor: currentTheme.backgroundColor,
+          backgroundColor: themeContext.backgroundColor,
           height: 86,
           paddingBottom: 24,
         },
@@ -37,7 +37,7 @@ export const BottomTabNavigator = () => {
           fontSize: 12,
           fontWeight: 'bold',
         },
-        activeTintColor: currentTheme.color,
+        activeTintColor: themeContext.color,
         inactiveTintColorTintColor: 'red',
       }}>
       <BottomTab.Screen
@@ -52,7 +52,7 @@ export const BottomTabNavigator = () => {
               style={{ color: color }}
             />
           ),
-          tabBarLabel: 'Categories',
+          tabBarLabel: translate('navigations.categories'),
         })}
       />
       <BottomTab.Screen
@@ -60,7 +60,7 @@ export const BottomTabNavigator = () => {
         component={TabTwoNavigator}
         options={{
           tabBarVisible: true,
-          tabBarLabel: 'Settings',
+          tabBarLabel: translate('navigations.settings'),
           tabBarIcon: ({ color }) => (
             <StyledAntDesignIcon name="setting" size={28} color={color} />
           ),

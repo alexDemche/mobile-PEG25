@@ -4,6 +4,7 @@ import { Switch } from 'react-native';
 import { AppText } from '../../components/AppText';
 import { useColorThemeStore } from '../../store';
 import { ViewStyled } from './styles';
+import { translate } from '../../i18n';
 
 export const ThemeSwitcher = () => {
   const isDarkMode = useColorThemeStore(state => state.isDarkMode);
@@ -12,7 +13,10 @@ export const ThemeSwitcher = () => {
   return (
     <ViewStyled>
       <AppText fontSize={16} marginBottom={5}>
-        Theme: {isDarkMode ? 'dark' : 'light'}
+        {translate('themes.theme')}:{' '}
+        {isDarkMode
+          ? translate('themes.name.dark')
+          : translate('themes.name.light')}
       </AppText>
       <Switch
         trackColor={{ false: '#767577', true: '#81b0ff' }}

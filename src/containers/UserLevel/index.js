@@ -1,6 +1,8 @@
 import React from 'react';
 import { SvgUri } from 'react-native-svg';
 
+import { translate } from '../../i18n';
+
 import { useQuery } from '@apollo/client';
 import { GET_LEVELS } from '../../graphql/requests';
 
@@ -32,7 +34,7 @@ export const UserLevel = () => {
   return (
     <ViewStyled>
       <AppText fontSize={16} marginBottom={5}>
-        Level: {id}
+        {translate('levels.level')}: {id}
       </AppText>
 
       {icon && (
@@ -41,11 +43,13 @@ export const UserLevel = () => {
         </IconWrapperStyled>
       )}
 
-      <AppText>Points: {points}</AppText>
+      <AppText>
+        {translate('levels.points')}: {points}
+      </AppText>
 
       {points <= toPoints && (
-        <AppText fontSize={16} marginBottom={5}>
-          to the next level: {toPoints - points + 1}
+        <AppText fontSize={14} marginBottom={5}>
+          {translate('levels.to_the_next_level')}: {toPoints - points + 1}
         </AppText>
       )}
     </ViewStyled>

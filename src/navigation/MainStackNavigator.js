@@ -1,43 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { CategoryScreen } from '../screens/CategoryScreen';
 import { CategoriesScreen } from '../screens/CategoriesScreen';
 import { EmotionScreen } from '../screens/EmotionScreen';
-import { useCurrentColorTheme } from '../hooks/useCurentColorTheme';
+
+import { translate } from '../i18n';
 
 const MainStack = createStackNavigator();
 
 export const MainStackNavigator = () => {
-  const currentTheme = useCurrentColorTheme();
+  const themeContext = useContext(ThemeContext);
 
   return (
     <MainStack.Navigator
-      // mode={'modal'}
       screenOptions={{
         animationEnabled: false,
-
         headerStyle: {
-          backgroundColor: currentTheme.backgroundColor,
-          // height: 90,
+          backgroundColor: themeContext.backgroundColor,
         },
-        // headerBackTitle: 'back',
-        // headerBackTitleVisible: false,
         headerBackTitleStyle: {
           fontSize: 12,
         },
-        cardStyle: { backgroundColor: currentTheme.backgroundColor },
-        headerTintColor: currentTheme.color,
+        cardStyle: { backgroundColor: themeContext.backgroundColor },
+        headerTintColor: themeContext.color,
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-        style: {},
       }}>
       <MainStack.Screen
         name="Categories"
         component={CategoriesScreen}
         options={{
-          title: 'Categories',
+          title: translate('navigations.categories'),
         }}
       />
 
@@ -45,7 +41,7 @@ export const MainStackNavigator = () => {
         name="Category"
         component={CategoryScreen}
         options={{
-          title: 'Category',
+          title: translate('navigations.category'),
         }}
       />
 
@@ -53,7 +49,7 @@ export const MainStackNavigator = () => {
         name="Emotion"
         component={EmotionScreen}
         options={{
-          title: 'Emotion',
+          title: translate('navigations.emotion'),
           headerShown: false,
         }}
       />

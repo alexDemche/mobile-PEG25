@@ -1,14 +1,11 @@
 import styled from 'styled-components/native';
-import { hexToRGB } from '../../../../utils/helpers';
-import { CSS } from '../../../../constants';
 
 export const ControlsButtonWrapper = styled.View`
   margin-bottom: 20px;
 `;
 
 export const ControlsContainer = styled.SafeAreaView`
-  background-color: ${props =>
-    hexToRGB(props.theme.backgroundColor, CSS.OPACITY.LG)};
+  background-color: ${props => props.theme.accentColorTransparent};
   position: absolute;
   left: 0;
   right: 0;

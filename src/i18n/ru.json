@@ -1,6 +1,7 @@
 {
   "levels": {
     "level": "Уровень",
+    "point": "Очко",
     "points": "Очки",
     "to_the_next_level": "До следующего уровня"
   },

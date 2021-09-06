@@ -7,4 +7,5 @@ export const StyledText = styled.Text`
   margin-top: ${props => (props.marginTop ? `${props.marginTop}px` : '0')};
   margin-bottom: ${props =>
     props.marginBottom ? `${props.marginBottom}px` : '0'};
+  padding: ${props => (props.padding ? `${props.padding}px` : '0')};
 `;

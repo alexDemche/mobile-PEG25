@@ -14,7 +14,7 @@ export const CategoriesScreen = ({ navigation }) => {
   }
 
   if (error) {
-    return <Error error={error} />;
+    return <Error error={error.message} />;
   }
 
   return <Categories categories={data.categories} navigation={navigation} />;

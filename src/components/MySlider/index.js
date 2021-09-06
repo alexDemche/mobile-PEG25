@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useMemo,
 } from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, SafeAreaView } from 'react-native';
 
 import { useInterval } from '../../hooks/useInterval';
 import { BASE_URL } from '../../config';
@@ -19,6 +19,7 @@ import { IconButton } from '../IconButton';
 import { Controls } from './components/Controls';
 import { EmptySlider } from './components/EmptySlider';
 import { ActiveIndexesBoard } from './components/ActiveIndexBoard';
+import { PopupUserPoint } from '../PopupUserPoint';
 
 const sliderWidth = viewportWidth;
 const sliderHeight = viewportHeight;
@@ -153,8 +154,10 @@ export const MySlider = ({ images, navigation, title }) => {
   }
 
   return (
-    <View style={{ position: 'relative' }}>
+    <View>
       {listComponent}
+
+      <PopupUserPoint />
 
       <ActiveIndexesBoard activeIndex={activeIndex} length={images.length} />
 

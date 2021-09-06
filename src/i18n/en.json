@@ -1,6 +1,7 @@
 {
   "levels": {
     "level": "Level",
+    "point": "Point",
     "points": "Points",
     "to_the_next_level": "To the next level"
   },

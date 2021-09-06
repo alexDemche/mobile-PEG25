@@ -26,7 +26,7 @@ export const UserLevel = () => {
   }
 
   if (error) {
-    return <Error error={error} />;
+    return <Error error={error.message} />;
   }
 
   const { id, icon, toPoints } = getUserLevelByPoints(data.levels, points);

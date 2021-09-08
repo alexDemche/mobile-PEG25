@@ -9,8 +9,7 @@ export const StyledIconWrapper = styled.Pressable`
   border-radius: ${props => (props.round ? '50px' : 0)};
   padding: ${props =>
     props.xl ? '20px' : props.lg ? '10px' : props.sm ? '5px' : 0};
-  box-shadow: 0 0 2px
-    ${props => (props.shadow ? props.theme.color : 'transparent')};
+  border: 1px solid ${props => props.theme.color};
 `;
 
 export const AntDesignIcon = styled(AntDesign)`

@@ -1,5 +1,4 @@
 import React from 'react';
-import { BASE_URL } from '../../config';
 
 import {
   StyledCategoryItemContainer,
@@ -14,7 +13,7 @@ export const CategoryItem = ({ emotion, onPress }) => {
     <StyledCategoryItemContainer onPress={onPress}>
       {icon && (
         <StyledCategoryItemImage
-          source={{ uri: `${BASE_URL}${icon.url}` }}
+          source={{ uri: icon.url }}
           resizeMode={'cover'}
         />
       )}

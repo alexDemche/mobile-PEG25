@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Platform, StatusBar } from 'react-native';
 
 export const ControlsButtonWrapper = styled.View`
   margin-bottom: 20px;
@@ -11,7 +12,10 @@ export const ControlsContainer = styled.SafeAreaView`
   right: 0;
   top: 0;
   bottom: 0;
-  display: ${props => (props.isShown ? 'flex' : 'none')};
+  padding-top: ${Platform.OS === 'android'
+    ? StatusBar.currentHeight + 'px'
+    : '10px'};
+  padding-bottom: 10px;
 `;
 
 export const ControlsHeader = styled.View`

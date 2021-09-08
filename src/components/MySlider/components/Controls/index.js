@@ -21,58 +21,58 @@ export const Controls = ({
   resumePlaying,
 }) => {
   return (
-    <ControlsContainer isShown={isShown}>
-      <ControlsHeader>
-        <ControlsHeaderButtons>
-          <IconButton name="back" lg onPress={goBack} round shadow />
+    <>
+      {isShown && (
+        <ControlsContainer>
+          <ControlsHeader>
+            <ControlsHeaderButtons>
+              <IconButton name="back" lg onPress={goBack} round />
 
-          <IconButton
-            name="close"
-            lg
-            onPress={() => setIsControls(false)}
-            round
-            shadow
-          />
-        </ControlsHeaderButtons>
+              <IconButton
+                name="close"
+                lg
+                onPress={() => setIsControls(false)}
+                round
+              />
+            </ControlsHeaderButtons>
 
-        <AppText fontSize="30">{title}</AppText>
-      </ControlsHeader>
+            <AppText fontSize="30">{title}</AppText>
+          </ControlsHeader>
 
-      <ControlsMainContainer>
-        <ControlsButtonWrapper>
-          <IconButton
-            name="pause"
-            size={36}
-            xl
-            onPress={resumePlaying}
-            text={translate('buttons.resume')}
-            round
-            shadow
-          />
-        </ControlsButtonWrapper>
+          <ControlsMainContainer>
+            <ControlsButtonWrapper>
+              <IconButton
+                name="pause"
+                size={36}
+                xl
+                onPress={resumePlaying}
+                text={translate('buttons.resume')}
+                round
+              />
+            </ControlsButtonWrapper>
 
-        <ControlsButtonWrapper>
-          <IconButton
-            name="reload1"
-            size={36}
-            xl
-            onPress={playFromBeginning}
-            text={translate('buttons.replay')}
-            round
-            shadow
-          />
-        </ControlsButtonWrapper>
+            <ControlsButtonWrapper>
+              <IconButton
+                name="reload1"
+                size={36}
+                xl
+                onPress={playFromBeginning}
+                text={translate('buttons.replay')}
+                round
+              />
+            </ControlsButtonWrapper>
 
-        <IconButton
-          name="back"
-          size={36}
-          xl
-          onPress={goBack}
-          text={translate('buttons.back')}
-          round
-          shadow
-        />
-      </ControlsMainContainer>
-    </ControlsContainer>
+            <IconButton
+              name="back"
+              size={36}
+              xl
+              onPress={goBack}
+              text={translate('buttons.back')}
+              round
+            />
+          </ControlsMainContainer>
+        </ControlsContainer>
+      )}
+    </>
   );
 };

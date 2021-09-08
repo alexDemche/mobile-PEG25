@@ -19,8 +19,6 @@ export default function App() {
   const currentTheme = useColorTheme();
   const statusBarColor = currentTheme.name === 'dark' ? 'light' : 'dark';
 
-  console.log('------ app render -----');
-
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={currentTheme}>

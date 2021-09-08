@@ -13,4 +13,5 @@ export const ViewStyled = styled.View`
 export const IconWrapperStyled = styled.View`
   width: 100px;
   height: 100px;
+  margin: 10px 0;
 `;

@@ -12,7 +12,6 @@ import { Loading } from '../../components/Loading';
 import { Error } from '../../components/Error';
 import { AppText } from '../../components/AppText';
 
-import { BASE_URL } from '../../config';
 import { getUserLevelByPoints } from '../../utils/helpers';
 
 import { IconWrapperStyled, ViewStyled } from './styles';
@@ -29,17 +28,27 @@ export const UserLevel = () => {
     return <Error error={error.message} />;
   }
 
-  const { id, icon, toPoints } = getUserLevelByPoints(data.levels, points);
+  const { levels = [] } = data;
+  const lastLevel = levels[levels.length - 1];
+
+  const {
+    id = 0,
+    number = 0,
+    icon = null,
+    toPoints = 0,
+  } = getUserLevelByPoints(levels, points);
+
+  const isLastLevel = id === lastLevel.id;
 
   return (
     <ViewStyled>
       <AppText fontSize={16} marginBottom={5}>
-        {translate('levels.level')}: {id}
+        {translate('levels.level')}: {number}
       </AppText>
 
       {icon && (
         <IconWrapperStyled>
-          <SvgUri width="100%" height="100%" uri={`${BASE_URL}${icon.url}`} />
+          <SvgUri width="100%" height="100%" uri={icon.url} />
         </IconWrapperStyled>
       )}
 
@@ -47,8 +56,8 @@ export const UserLevel = () => {
         {translate('levels.points')}: {points}
       </AppText>
 
-      {points <= toPoints && (
-        <AppText fontSize={14} marginBottom={5}>
+      {!isLastLevel && (
+        <AppText fontSize={12}>
           {translate('levels.to_the_next_level')}: {toPoints - points + 1}
         </AppText>
       )}

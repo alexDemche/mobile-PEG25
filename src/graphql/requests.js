@@ -35,6 +35,7 @@ export const GET_LEVELS = gql`
     levels {
       name
       id
+      number
       toPoints
       icon {
         url

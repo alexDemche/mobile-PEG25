@@ -6,10 +6,9 @@ import { AppText } from '../AppText';
 
 export const PopupUserPoint = () => {
   const [showPointPopup, setShowPointPopup] = useState(true);
-  console.log('show -->', showPointPopup);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setShowPointPopup(false), 1000);
+    const timer1 = setTimeout(() => setShowPointPopup(false), 2000);
 
     return () => {
       clearTimeout(timer1);

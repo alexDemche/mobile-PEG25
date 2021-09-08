@@ -5,15 +5,14 @@ import React, {
   useEffect,
   useMemo,
 } from 'react';
-import { View, FlatList, SafeAreaView } from 'react-native';
+import { View, FlatList, Platform, StatusBar } from 'react-native';
 
 import { useInterval } from '../../hooks/useInterval';
-import { BASE_URL } from '../../config';
 import { viewportWidth, viewportHeight } from '../../utils/dimensions';
 
 import { useLevelsStore } from '../../store';
 
-import { SettingButtonStyledSafeAreaView, Slide, SlideImage } from './styles';
+import { FooterSafeAreaViewStyled, Slide, SlideImage } from './styles';
 
 import { IconButton } from '../IconButton';
 import { Controls } from './components/Controls';
@@ -27,7 +26,6 @@ const sliderHeight = viewportHeight;
 export const MySlider = ({ images, navigation, title }) => {
   const carouselRef = useRef(null);
 
-  const [count, setCount] = useState(3);
   const [delay, setDelay] = useState(500);
   const [isRunning, setIsRunning] = useState(true);
   const [isControls, setIsControls] = useState(false);
@@ -39,11 +37,7 @@ export const MySlider = ({ images, navigation, title }) => {
 
   useInterval(
     () => {
-      if (count > 0) {
-        setCount(count - 1);
-      } else {
-        _goToNextPage();
-      }
+      _goToNextPage();
     },
     isRunning ? delay : null,
   );
@@ -99,7 +93,6 @@ export const MySlider = ({ images, navigation, title }) => {
   };
 
   const _onMomentumScrollEnd = ev => {
-    console.log();
     const index = ev.nativeEvent.contentOffset.x
       ? Math.floor(ev.nativeEvent.contentOffset.x / sliderWidth)
       : 0;
@@ -120,7 +113,8 @@ export const MySlider = ({ images, navigation, title }) => {
     return (
       <Slide width={sliderWidth} height={sliderHeight}>
         <SlideImage
-          source={{ uri: `${BASE_URL}${item.url}` }}
+          fadeDuration={0}
+          source={{ uri: item.url }}
           resizeMode={'cover'}
         />
       </Slide>
@@ -140,10 +134,10 @@ export const MySlider = ({ images, navigation, title }) => {
         onMomentumScrollEnd={_onMomentumScrollEnd}
         horizontal={true}
         pagingEnabled
-        showsHorizontalScrollIndicator={true}
+        showsHorizontalScrollIndicator={false}
         onTouchStart={() => setIsRunning(false)}
-        initialNumToRender={2}
-        maxToRenderPerBatch={5}
+        initialNumToRender={1}
+        maxToRenderPerBatch={2}
         removeClippedSubviews={true}
       />
     );
@@ -159,9 +153,9 @@ export const MySlider = ({ images, navigation, title }) => {
 
       <PopupUserPoint />
 
-      <ActiveIndexesBoard activeIndex={activeIndex} length={images.length} />
+      <FooterSafeAreaViewStyled>
+        <ActiveIndexesBoard activeIndex={activeIndex} length={images.length} />
 
-      <SettingButtonStyledSafeAreaView>
         <IconButton
           name="setting"
           size={44}
@@ -171,9 +165,8 @@ export const MySlider = ({ images, navigation, title }) => {
             toggleControls();
           }}
           round
-          shadow
         />
-      </SettingButtonStyledSafeAreaView>
+      </FooterSafeAreaViewStyled>
 
       <Controls
         setIsControls={setIsControls}
@@ -182,6 +175,8 @@ export const MySlider = ({ images, navigation, title }) => {
         goBack={goBack}
         playFromBeginning={playFromBeginning}
         resumePlaying={resumePlaying}
+        platform={Platform.OS}
+        statusBarHeight={StatusBar.currentHeight}
       />
     </View>
   );

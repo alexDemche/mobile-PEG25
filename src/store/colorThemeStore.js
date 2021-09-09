@@ -12,9 +12,9 @@ let colorThemeStore = set => ({
   setIsDarkMode: boolean => set(state => ({ isDarkMode: boolean })),
 });
 
-// colorThemeStore = persist(colorThemeStore, {
-//   name: 'color-theme-storage',
-//   getStorage: () => AsyncStorage,
-// });
+colorThemeStore = persist(colorThemeStore, {
+  name: 'color-theme-storage',
+  getStorage: () => AsyncStorage,
+});
 
 export const useColorThemeStore = create(colorThemeStore);

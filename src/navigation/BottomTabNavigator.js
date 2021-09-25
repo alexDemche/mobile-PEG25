@@ -38,7 +38,6 @@ export const BottomTabNavigator = () => {
           fontWeight: 'bold',
         },
         activeTintColor: themeContext.color,
-        inactiveTintColorTintColor: 'red',
       }}>
       <BottomTab.Screen
         name="TabOne"

@@ -15,6 +15,7 @@ export const MainStackNavigator = () => {
 
   return (
     <MainStack.Navigator
+      mode="modal"
       screenOptions={{
         animationEnabled: false,
         headerStyle: {

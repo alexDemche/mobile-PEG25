@@ -19,6 +19,8 @@ export const Controls = ({
   isShown,
   playFromBeginning,
   resumePlaying,
+  activeIndex,
+  lastElementIndex,
 }) => {
   return (
     <>
@@ -40,16 +42,18 @@ export const Controls = ({
           </ControlsHeader>
 
           <ControlsMainContainer>
-            <ControlsButtonWrapper>
-              <IconButton
-                name="pause"
-                size={36}
-                xl
-                onPress={resumePlaying}
-                text={translate('buttons.resume')}
-                round
-              />
-            </ControlsButtonWrapper>
+            {activeIndex !== lastElementIndex && (
+              <ControlsButtonWrapper>
+                <IconButton
+                  name="pause"
+                  size={36}
+                  xl
+                  onPress={resumePlaying}
+                  text={translate('buttons.resume')}
+                  round
+                />
+              </ControlsButtonWrapper>
+            )}
 
             <ControlsButtonWrapper>
               <IconButton

@@ -12,13 +12,14 @@ import { viewportWidth, viewportHeight } from '../../utils/dimensions';
 
 import { useLevelsStore } from '../../store';
 
-import { FooterSafeAreaViewStyled, Slide, SlideImage } from './styles';
+import { FooterSafeAreaViewStyled } from './styles';
 
 import { IconButton } from '../IconButton';
 import { Controls } from './components/Controls';
 import { EmptySlider } from './components/EmptySlider';
 import { ActiveIndexesBoard } from './components/ActiveIndexBoard';
 import { PopupUserPoint } from '../PopupUserPoint';
+import { SliderItem } from './components/SliderItem';
 
 const sliderWidth = viewportWidth;
 const sliderHeight = viewportHeight;
@@ -26,7 +27,7 @@ const sliderHeight = viewportHeight;
 export const MySlider = ({ images, navigation, title }) => {
   const carouselRef = useRef(null);
 
-  const [delay, setDelay] = useState(500);
+  const [delay, setDelay] = useState(1000);
   const [isRunning, setIsRunning] = useState(true);
   const [isControls, setIsControls] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -109,19 +110,11 @@ export const MySlider = ({ images, navigation, title }) => {
     [],
   );
 
-  const _renderItem = useCallback(({ item, index }) => {
-    return (
-      <Slide width={sliderWidth} height={sliderHeight}>
-        <SlideImage
-          fadeDuration={0}
-          source={{ uri: item.url }}
-          resizeMode={'cover'}
-        />
-      </Slide>
-    );
+  const _renderItem = useCallback(({ item }) => {
+    return <SliderItem item={item} width={sliderWidth} height={sliderHeight} />;
   }, []);
 
-  const _keyExtractor = useCallback(item => item.id.toString(), []);
+  const _keyExtractor = useCallback(item => item.id, []);
 
   const listComponent = useMemo(() => {
     return (
@@ -136,9 +129,9 @@ export const MySlider = ({ images, navigation, title }) => {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         onTouchStart={() => setIsRunning(false)}
-        initialNumToRender={1}
-        maxToRenderPerBatch={2}
-        removeClippedSubviews={true}
+        initialNumToRender={2}
+        maxToRenderPerBatch={6}
+        removeClippedSubviews={false}
       />
     );
   }, [images]);
@@ -177,6 +170,8 @@ export const MySlider = ({ images, navigation, title }) => {
         resumePlaying={resumePlaying}
         platform={Platform.OS}
         statusBarHeight={StatusBar.currentHeight}
+        activeIndex={activeIndex}
+        lastElementIndex={LAST_ELEMENT_INDEX}
       />
     </View>
   );

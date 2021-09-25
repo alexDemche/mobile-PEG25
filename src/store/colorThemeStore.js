@@ -9,7 +9,6 @@ let colorThemeStore = set => ({
   isUserToggledMode: null,
   toggleDarkMode: () =>
     set(state => ({ isDarkMode: !state.isDarkMode, isUserToggledMode: true })),
-  setIsDarkMode: boolean => set(state => ({ isDarkMode: boolean })),
 });
 
 colorThemeStore = persist(colorThemeStore, {

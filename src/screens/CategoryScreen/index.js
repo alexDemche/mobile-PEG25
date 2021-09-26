@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNetInfo } from '@react-native-community/netinfo';
 
 import { useQuery } from '@apollo/client';
 import { GET_CATEGORY } from '../../graphql/requests';
@@ -9,11 +10,19 @@ import { Error } from '../../components/Error';
 
 export const CategoryScreen = ({ navigation, route }) => {
   const { categoryId } = route.params;
-  const { data, loading, error } = useQuery(GET_CATEGORY, {
+  const { data, loading, error, refetch } = useQuery(GET_CATEGORY, {
     variables: {
       categoryId: categoryId,
     },
   });
+
+  const netInfo = useNetInfo();
+
+  useEffect(() => {
+    if (netInfo.isConnected && error) {
+      refetch();
+    }
+  }, [netInfo.isConnected, refetch, error]);
 
   if (loading) {
     return <Loading />;

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNetInfo } from '@react-native-community/netinfo';
 
 import { useQuery } from '@apollo/client';
 import { GET_EMOTION } from '../../graphql/requests';
@@ -9,11 +10,19 @@ import { Error } from '../../components/Error';
 
 export const EmotionScreen = ({ navigation, route }) => {
   const { emotionId } = route.params;
-  const { data, loading, error } = useQuery(GET_EMOTION, {
+  const { data, loading, error, refetch } = useQuery(GET_EMOTION, {
     variables: {
       emotionId,
     },
   });
+
+  const netInfo = useNetInfo();
+
+  useEffect(() => {
+    if (netInfo.isConnected && error) {
+      refetch();
+    }
+  }, [netInfo.isConnected, refetch, error]);
 
   if (loading) {
     return <Loading />;

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNetInfo } from '@react-native-community/netinfo';
 import { SvgUri } from 'react-native-svg';
 
 import { translate } from '../../i18n';
@@ -17,8 +18,16 @@ import { getUserLevelByPoints } from '../../utils/helpers';
 import { IconWrapperStyled, ViewStyled } from './styles';
 
 export const UserLevel = () => {
-  const { data, loading, error } = useQuery(GET_LEVELS);
+  const { data, loading, error, refetch } = useQuery(GET_LEVELS);
   const points = useLevelsStore(state => state.points);
+
+  const netInfo = useNetInfo();
+
+  useEffect(() => {
+    if (netInfo.isConnected && error) {
+      refetch();
+    }
+  }, [netInfo.isConnected, refetch, error]);
 
   if (loading) {
     return <Loading />;

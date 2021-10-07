@@ -4,6 +4,8 @@ import { useNetInfo } from '@react-native-community/netinfo';
 import { useQuery } from '@apollo/client';
 import { GET_CATEGORY } from '../../graphql/requests';
 
+import { CURRENT_LOCALE } from '../../i18n';
+
 import { CategoryItems } from '../../components/CategoryItems';
 import { Loading } from '../../components/Loading';
 import { Error } from '../../components/Error';
@@ -13,6 +15,7 @@ export const CategoryScreen = ({ navigation, route }) => {
   const { data, loading, error, refetch } = useQuery(GET_CATEGORY, {
     variables: {
       categoryId: categoryId,
+      currLocale: CURRENT_LOCALE,
     },
   });
 
@@ -32,10 +35,8 @@ export const CategoryScreen = ({ navigation, route }) => {
     return <Error error={error.message} />;
   }
 
-  const {
-    category,
-    category: { emotions },
-  } = data;
+  const category = data.categories[0];
+  const emotions = category.emotions;
 
   return (
     <CategoryItems

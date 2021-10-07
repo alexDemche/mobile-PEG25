@@ -21,10 +21,15 @@
   "buttons": {
     "resume": "Resume",
     "replay": "Replay",
-    "back": "Back"
+    "back": "Back",
+    "back_to": "Back to {{screenName}}"
   },
   "titles": {
-    "categories": "Categories"
+    "categories": "Categories",
+    "category": "Category"
+  },
+  "slider": {
+    "no_images": "No images"
   },
   "loading": "Loading"
 }

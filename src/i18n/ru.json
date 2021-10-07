@@ -21,10 +21,15 @@
   "buttons": {
     "resume": "Продолжить",
     "replay": "Повторить",
-    "back": " Назад"
+    "back": "Назад",
+    "back_to": "Назад в {{screenName}}"
   },
   "titles": {
-    "categories": "Категории"
+    "categories": "Категории",
+    "category": "Категория"
+  },
+  "slider": {
+    "no_images": "Нет изображений"
   },
   "loading": "Загрузка"
 }

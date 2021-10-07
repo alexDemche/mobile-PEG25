@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GET_CATEGORIES = gql`
-  query getCategories {
-    categories {
+  query getCategories($currLocale: String!) {
+    categories(locale: $currLocale) {
       title
       id
       icon {
@@ -13,8 +13,8 @@ export const GET_CATEGORIES = gql`
 `;
 
 export const GET_CATEGORY = gql`
-  query getCategory($categoryId: ID!) {
-    category(id: $categoryId) {
+  query getCategory($categoryId: ID!, $currLocale: String!) {
+    categories(locale: $currLocale, where: { id: $categoryId }) {
       title
       id
       description
@@ -67,8 +67,8 @@ export const GET_EMOTIONS_BY_CATEGORY_ID = gql`
 `;
 
 export const GET_EMOTION = gql`
-  query getEmotion($emotionId: ID!) {
-    emotion(id: $emotionId) {
+  query getEmotion($emotionId: ID!, $currLocale: String!) {
+    emotions(locale: $currLocale, where: { id: $emotionId }) {
       title
       id
       description

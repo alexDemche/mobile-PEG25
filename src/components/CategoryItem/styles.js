@@ -1,9 +1,12 @@
 import styled from 'styled-components/native';
+import { convertWidthInPercent } from '../../utils/dimensions';
 
 export const StyledCategoryItemContainer = styled.TouchableOpacity`
-   margin: 15px 10px
-   align-items: center;
-   width: 100px;
+  width: ${props => props.size}px;
+  max-width: 150px;
+  padding: 10px 5px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledCategoryItemTextWrapper = styled.View`
@@ -12,7 +15,9 @@ export const StyledCategoryItemTextWrapper = styled.View`
 `;
 
 export const StyledCategoryItemImage = styled.Image`
-  width: 80px;
-  height: 80px;
-  border-radius: 40px;
+  width: ${convertWidthInPercent(20)}px;
+  height: ${convertWidthInPercent(20)}px;
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 20px;
 `;

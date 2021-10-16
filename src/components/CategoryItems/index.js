@@ -4,11 +4,17 @@ import { styles } from '../../stylesGlobal';
 import { CategoryItem } from '../CategoryItem';
 import { AppText } from '../AppText';
 
+import { viewportWidth } from '../../utils/dimensions';
+
 export const CategoryItems = ({ navigation, emotions, category }) => {
+  const numOfColumns = 3;
+  const size = viewportWidth / numOfColumns;
+
   const _renderItem = useCallback(
     ({ item: emotion }) => {
       return (
         <CategoryItem
+          size={size}
           emotion={emotion}
           onPress={() =>
             navigation.navigate('Emotion', {
@@ -26,7 +32,7 @@ export const CategoryItems = ({ navigation, emotions, category }) => {
 
   const ListHeaderComponent = () => {
     return (
-      <AppText fontSize={24} marginBottom={5}>
+      <AppText fontSize={24} marginBottom={15}>
         {category.title}
       </AppText>
     );
@@ -37,7 +43,7 @@ export const CategoryItems = ({ navigation, emotions, category }) => {
       data={emotions}
       renderItem={_renderItem}
       keyExtractor={_keyExtractor}
-      numColumns={3}
+      numColumns={numOfColumns}
       contentContainerStyle={styles.flatList}
       ListHeaderComponent={ListHeaderComponent}
     />

@@ -3,7 +3,7 @@ import { Alert, Animated, Easing } from 'react-native';
 
 import * as MediaLibrary from 'expo-media-library';
 import * as FileSystem from 'expo-file-system';
-import * as Location from 'expo-location';
+// import * as Location from 'expo-location';
 
 import { IconButton } from '../IconButton';
 import { AppText } from '../AppText';
@@ -36,7 +36,7 @@ export const DownloadFile = props => {
 
   const saveFile = async fileUri => {
     try {
-      const { status } = await Location.requestForegroundPermissionsAsync();
+      const { status } = await MediaLibrary.requestPermissionsAsync();
 
       if (status !== 'granted') {
         setLoading(false);
@@ -88,7 +88,7 @@ export const DownloadFile = props => {
       <Animated.View
         style={[
           {
-            transform: [{ rotate: loading ? spin : 0 }],
+            transform: [{ rotate: loading ? spin : '0deg' }],
           },
         ]}>
         <IconButton

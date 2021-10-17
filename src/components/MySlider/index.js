@@ -77,6 +77,10 @@ export const MySlider = ({ images, navigation, title }) => {
     setIsControls(!isControls);
   };
 
+  const toggleRunning = () => {
+    setIsRunning(!isRunning);
+  };
+
   const playFromBeginning = () => {
     setActiveIndex(0);
     setIsRunning(true);
@@ -149,6 +153,16 @@ export const MySlider = ({ images, navigation, title }) => {
 
       <FooterSafeAreaViewStyled>
         <ActiveIndexesBoard activeIndex={activeIndex} length={images.length} />
+
+        {activeIndex !== LAST_ELEMENT_INDEX && (
+          <IconButton
+            name={isRunning ? 'pause' : 'playcircleo'}
+            onPress={toggleRunning}
+            size={32}
+            lg
+            round
+          />
+        )}
 
         <IconButton
           name="setting"

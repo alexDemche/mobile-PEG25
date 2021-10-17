@@ -22,7 +22,8 @@
     "resume": "Продолжить",
     "replay": "Повторить",
     "back": "Назад",
-    "back_to": "Назад в {{screenName}}"
+    "back_to": "Назад в {{screenName}}",
+    "download": "Загрузить"
   },
   "titles": {
     "categories": "Категории",
@@ -31,5 +32,18 @@
   "slider": {
     "no_images": "Нет изображений"
   },
-  "loading": "Загрузка"
+  "loading": "Загрузка",
+  "alert_download": {
+    "success": {
+      "title": "Успешно",
+      "message": "Успешно загружено"
+    },
+    "error": {
+      "title": "Ошибка"
+    },
+    "not_granted": {
+      "title": "Не предоставлено",
+      "message": "Разрешение не предоставлено"
+    }
+  }
 }

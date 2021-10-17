@@ -22,7 +22,8 @@
     "resume": "Resume",
     "replay": "Replay",
     "back": "Back",
-    "back_to": "Back to {{screenName}}"
+    "back_to": "Back to {{screenName}}",
+    "download": "Download"
   },
   "titles": {
     "categories": "Categories",
@@ -31,5 +32,18 @@
   "slider": {
     "no_images": "No images"
   },
-  "loading": "Loading"
+  "loading": "Loading",
+  "alert_download": {
+    "success": {
+      "title": "Success",
+      "message": "Success downloaded"
+    },
+    "error": {
+      "title": "Error"
+    },
+    "not_granted": {
+      "title": "Not granted",
+      "message": "Permission not granted"
+    }
+  }
 }

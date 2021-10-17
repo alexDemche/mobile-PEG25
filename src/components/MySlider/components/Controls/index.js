@@ -11,12 +11,14 @@ import {
 import { AppText } from '../../../AppText';
 import { IconButton } from '../../../IconButton';
 import { translate } from '../../../../i18n';
+import { DownloadFile } from '../../../DownloadFile';
 
 export const Controls = ({
   goBack,
   setIsControls,
   title,
   isShown,
+  activeImageUrl,
   playFromBeginning,
   resumePlaying,
   activeIndex,
@@ -45,8 +47,8 @@ export const Controls = ({
             {activeIndex !== lastElementIndex && (
               <ControlsButtonWrapper>
                 <IconButton
-                  name="pause"
-                  size={36}
+                  name="playcircleo"
+                  size={42}
                   xl
                   onPress={resumePlaying}
                   text={translate('buttons.resume')}
@@ -66,14 +68,9 @@ export const Controls = ({
               />
             </ControlsButtonWrapper>
 
-            <IconButton
-              name="back"
-              size={36}
-              xl
-              onPress={goBack}
-              text={translate('buttons.back')}
-              round
-            />
+            <ControlsButtonWrapper>
+              <DownloadFile size={36} xl round uri={activeImageUrl} />
+            </ControlsButtonWrapper>
           </ControlsMainContainer>
         </ControlsContainer>
       )}

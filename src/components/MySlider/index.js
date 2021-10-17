@@ -78,9 +78,10 @@ export const MySlider = ({ images, navigation, title }) => {
   };
 
   const playFromBeginning = () => {
-    setActiveIndex(-1);
+    setActiveIndex(0);
     setIsRunning(true);
     setIsControls(false);
+    _scrollToIndex(0, false);
   };
 
   const goBack = () => {
@@ -172,6 +173,7 @@ export const MySlider = ({ images, navigation, title }) => {
         statusBarHeight={StatusBar.currentHeight}
         activeIndex={activeIndex}
         lastElementIndex={LAST_ELEMENT_INDEX}
+        activeImageUrl={images[activeIndex]?.url}
       />
     </View>
   );

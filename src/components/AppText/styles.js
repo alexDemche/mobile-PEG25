@@ -8,4 +8,5 @@ export const StyledText = styled.Text`
   margin-bottom: ${props =>
     props.marginBottom ? `${props.marginBottom}px` : '0'};
   padding: ${props => (props.padding ? `${props.padding}px` : '0')};
+  text-align: ${props => (props.textAlign ? `${props.textAlign}` : 'left')};
 `;
